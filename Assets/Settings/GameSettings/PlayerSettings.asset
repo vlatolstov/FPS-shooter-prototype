@@ -15,4 +15,4 @@ MonoBehaviour:
   MovementSpeed: 8
   JumpHeight: 2
   CrouchingModifier: 0.4
-  FallSpeed: 10
+  CrouchTransitionSpeed: 7

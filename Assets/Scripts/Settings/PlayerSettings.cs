@@ -10,4 +10,5 @@ public class PlayerSettings : ScriptableObject {
     [Range(0, 1)]
     [Tooltip("Speed adjustment in crouch mode. As (speed * crouchModifier")]
     public float CrouchingModifier;
+    public float CrouchTransitionSpeed;
 }
