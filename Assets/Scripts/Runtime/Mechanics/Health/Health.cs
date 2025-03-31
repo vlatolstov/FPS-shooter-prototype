@@ -4,6 +4,8 @@ namespace Shooter.Health {
         private float _maxHealth;
 
         public bool IsAlive => _currentHealth > 0;
+        public float CurrentHealth => _currentHealth;
+        public float MaxHealth => _maxHealth;
 
         public Health(float currentHealth, float maxHealth) {
             _currentHealth = currentHealth;

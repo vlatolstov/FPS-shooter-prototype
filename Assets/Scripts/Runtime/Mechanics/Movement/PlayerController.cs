@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     [Inject] private PlayerSettings _playerSettings;
     [Inject] private LevelSettings _levelSettings;
     private CharacterController _controller;
+    private PlayerWeaponController _weaponController;
     private float _verticalVelocity;
 
     private float _originalHeight;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         _controller = GetComponent<CharacterController>();
+        _weaponController = GetComponent<PlayerWeaponController>();
         _originalHeight = _controller.height;
         _originalCenter = _controller.center;
         _crouchCenter = new(_originalCenter.x, _originalCenter.y / 2, _originalCenter.z);
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         Move();
         CheckCrouching();
+
     }
 
     private void Move() {
