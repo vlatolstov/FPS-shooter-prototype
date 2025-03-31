@@ -1,4 +1,5 @@
-using Shooter.Weapons;
+using Shooter.Items;
+using Shooter.Items.Weapons;
 
 using UnityEngine;
 
@@ -12,8 +13,8 @@ public class PlayerWeaponController : MonoBehaviour {
     public IWeapon CurrentWeapon { get; private set; }
 
     public void ChangeWeapon(IWeapon newWeapon) {
-        CurrentWeapon = newWeapon;
-        var baseItem = (newWeapon as BaseItem);
+        //CurrentWeapon = newWeapon;
+        //var baseItem = (newWeapon as BaseItem);
         //InstallWeapon(baseItem.ItemPrefab);
         //_playerModel.SetCurrentWeapon(baseItem.InventoryItem);
     }

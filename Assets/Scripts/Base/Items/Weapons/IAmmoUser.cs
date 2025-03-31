@@ -1,8 +1,13 @@
-namespace Shooter.Weapons {
+namespace Shooter.Items.Weapons {
     public interface IAmmoUser {
-        int CurrentAmmo { get; }
-        int MaxAmmo { get; }
-        bool HasAmmo { get; }
         void ConsumeAmmo(int amount);
+    }
+
+    public interface IReloadable {
+        void Reload();
+    }
+
+    public interface IAimable {
+        void Aim();
     }
 }

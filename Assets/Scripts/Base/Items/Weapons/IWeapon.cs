@@ -1,7 +1,7 @@
 using UnityEngine;
 
-namespace Shooter.Weapons {
+namespace Shooter.Items.Weapons {
     public interface IWeapon {
-        void Hit(Vector3 origin, Vector3 direction);
+        void Attack(Vector3 origin, Vector3 direction);
     }
 }

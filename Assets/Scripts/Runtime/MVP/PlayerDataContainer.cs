@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 
 using Shooter.Health;
-using Shooter.Weapons;
 
 using UnityEngine;
 

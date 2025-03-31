@@ -1,10 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-
-using Shooter.Weapons;
-
-using UnityEngine;
 
 using Zenject;
 

@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-
 using UnityEngine;
 
 using Zenject;
@@ -87,6 +85,6 @@ public class PlayerController : MonoBehaviour {
 
     private void Shoot() {
         var weapon = _weaponController.CurrentWeapon;
-        weapon.Hit(_camera.transform.position, _camera.transform.forward);
+        weapon.Attack(_camera.transform.position, _camera.transform.forward);
     }
 }
