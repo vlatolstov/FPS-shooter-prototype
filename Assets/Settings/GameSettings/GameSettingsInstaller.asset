@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f5dca0ee8ff54c448cba95b7762cb87, type: 3}
+  m_Name: GameSettingsInstaller
+  m_EditorClassIdentifier: 
+  PlayerSettings: {fileID: 11400000, guid: 6c25468f38930354380467b126a27ebb, type: 2}
+  CameraSettings: {fileID: 11400000, guid: 7156ac5bf4f11cb40879e7f3acdeb674, type: 2}
+  LevelSettings: {fileID: 11400000, guid: 3adc57a7797728f42bb6fa5afa8ed05c, type: 2}
