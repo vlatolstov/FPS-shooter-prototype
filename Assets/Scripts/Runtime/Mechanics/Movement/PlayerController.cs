@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
             _verticalVelocity = -2f;
         }
 
-        if (_controller.isGrounded && _input.IsJumping) {
+        if (_controller.isGrounded && _input.IsJumping && CanFitInShiftedPosition(Vector3.up * _playerSettings.JumpHeight)) {
             _verticalVelocity = Mathf.Sqrt(_playerSettings.JumpHeight * -2f * _levelSettings.Gravity) * SpeedModifier;
         }
 
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
             _isCrouching = true;
         }
         else {
-            if (CanStandUp()) {
+            if (CanFitInShiftedPosition(Vector3.up * (_originalHeight / 2))) {
                 _isCrouching = false;
             }
         }
@@ -60,9 +60,9 @@ public class PlayerController : MonoBehaviour {
         SmoothCrouching();
     }
 
-    private bool CanStandUp() {
-        Vector3 checkPosition = transform.position + Vector3.up * (_originalHeight / 2);
-        float checkRadius = _controller.radius;
+    private bool CanFitInShiftedPosition(Vector3 positionDelta) {
+        Vector3 checkPosition = transform.position + positionDelta;
+        float checkRadius = _controller.radius -0.05f;
         bool blocked = Physics.CheckSphere(checkPosition, checkRadius, ~LayerMask.GetMask("Player"));
         return !blocked;
     }
