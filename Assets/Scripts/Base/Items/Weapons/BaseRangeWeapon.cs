@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace Shooter.Weapons {
-    public abstract class BaseRangeWeapon : BaseWeapon, IWeapon, IReloadable, IAmmoUser {
+    public abstract class BaseRangeWeapon : BaseWeapon, IReloadable, IAmmoUser {
         protected readonly float reloadTime;
         protected bool isReloading = false;
         protected int currentAmmo;
@@ -9,11 +9,7 @@ namespace Shooter.Weapons {
 
         private readonly float spread;
 
-        protected BaseRangeWeapon(float reloadTime, int currentAmmo, int maxAmmo, float spread, float hitDamage, float range, GameObject weaponPrefab) : base(hitDamage, range, weaponPrefab) {
-            this.reloadTime = reloadTime;
-            this.currentAmmo = currentAmmo;
-            this.maxAmmo = maxAmmo;
-            this.spread = spread;
+        protected BaseRangeWeapon(float range, float hitDamage) : base(range, hitDamage) {
         }
 
         public float ReloadTime => reloadTime;

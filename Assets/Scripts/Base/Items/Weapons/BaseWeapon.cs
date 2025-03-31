@@ -1,22 +1,18 @@
 using UnityEngine;
 
 namespace Shooter.Weapons {
-    public abstract class BaseWeapon : IWeapon {
-        protected GameObject weaponPrefab;
+    public abstract class BaseWeapon : BaseItem, IWeapon {
         protected readonly float range;
         protected readonly float hitDamage;
 
-        protected BaseWeapon(float hitDamage, float range, GameObject weaponPrefab) {
-            this.hitDamage = hitDamage;
+        protected BaseWeapon(float range, float hitDamage) {
             this.range = range;
-            this.weaponPrefab = weaponPrefab;
+            this.hitDamage = hitDamage;
         }
 
         public float Range => range;
 
         public float HitDamage => hitDamage;
-
-        public GameObject WeaponPrefab => weaponPrefab;
 
         public abstract void Hit(Vector3 origin, Vector3 direction);
     }

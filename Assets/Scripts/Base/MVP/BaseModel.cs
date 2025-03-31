@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 public abstract class BaseModel<T> : IModel where T : BaseDataContainer {
 
-    private T _dataContainer;
-    private Dictionary<Type, IList<Action>> _dataListeners;
+    protected T DataContainer { get; private set; }
+    private Dictionary<Type, IList<Action>> _dataListeners = new();
 
     protected BaseModel(T container) {
-        _dataContainer = container;
+        DataContainer = container;
     }
 
     protected void ChangeData<TData>(Action<TData, T> action) where TData : IData {
 
-        action?.Invoke(_dataContainer.GetData<TData>(), _dataContainer);
+        action?.Invoke(DataContainer.GetData<TData>(), DataContainer);
 
         var type = typeof(TData);
 

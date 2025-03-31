@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3705768895801854342}
   - component: {fileID: 968118942855799333}
   - component: {fileID: 5063441047937576889}
-  - component: {fileID: -8653413073536549750}
+  - component: {fileID: 5607639683766302124}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949be6caac1c51f4faca917125eab91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-8653413073536549750
+--- !u!114 &5607639683766302124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,11 +160,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2248451544850968832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3559089774e84d84d904e3cda474334c, type: 3}
+  m_Script: {fileID: 11500000, guid: 372f6607ed0e9a940aa72f10e1af0860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponSocket: {fileID: 3266588447893839932}
-  _shotgunPrefab: {fileID: 0}
+  _shotgunPrefab: {fileID: 1101807287475011487, guid: 0cd2130d553aca1499627cef7c2cdcb5,
+    type: 3}
 --- !u!1 &4427745182875431241
 GameObject:
   m_ObjectHideFlags: 0

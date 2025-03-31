@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
-public class BasePresenter : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public abstract class BasePresenter<TModel> where TModel : IModel {
+    protected readonly TModel Model;
+    protected readonly IViewsContainer ViewsContainer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    protected BasePresenter(TModel model, IViewsContainer viewsContainer) {
+        Model = model;
+        ViewsContainer = viewsContainer;
     }
 }

@@ -8,9 +8,12 @@ namespace Shooter.Weapons {
     public class Shotgun : BaseRangeWeapon {
         private readonly int _hitsPerBullet;
 
-        public Shotgun(float reloadTime, int currentAmmo, int maxAmmo, float spread, float hitDamage, float range, GameObject weaponPrefab, int hitsPerBullet) : base(reloadTime, currentAmmo, maxAmmo, spread, hitDamage, range, weaponPrefab) {
-            _hitsPerBullet = hitsPerBullet;
+        public Shotgun(float range, float hitDamage) : base(range, hitDamage) {
         }
+
+        protected override GameObject ItemPrefab => throw new System.NotImplementedException();
+
+        protected override ItemSO ItemInfo => throw new System.NotImplementedException();
 
         public override void Aim(bool status) {
             throw new System.NotImplementedException();

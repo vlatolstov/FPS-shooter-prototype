@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class BaseDataContainer : MonoBehaviour {
+public class BaseDataContainer {
     private Dictionary<Type, IData> _dataContainer = new();
 
     public BaseDataContainer(IEnumerable<IData> data) {
