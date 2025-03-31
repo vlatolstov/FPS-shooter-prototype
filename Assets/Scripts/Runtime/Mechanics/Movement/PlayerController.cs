@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     [Inject] private LevelSettings _levelSettings;
     private CharacterController _controller;
     private PlayerWeaponController _weaponController;
+    private Camera _camera;
     private float _verticalVelocity;
 
     private float _originalHeight;
@@ -22,15 +23,21 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         _controller = GetComponent<CharacterController>();
         _weaponController = GetComponent<PlayerWeaponController>();
+        _camera = GetComponentInChildren<Camera>();
         _originalHeight = _controller.height;
         _originalCenter = _controller.center;
         _crouchCenter = new(_originalCenter.x, _originalCenter.y / 2, _originalCenter.z);
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update() {
         Move();
         CheckCrouching();
 
+        if (_input.IsShooting) {
+            Shoot();
+        }
     }
 
     private void Move() {
@@ -76,5 +83,10 @@ public class PlayerController : MonoBehaviour {
 
         _controller.height = Mathf.Lerp(_controller.height, targetHeight, _playerSettings.CrouchTransitionSpeed * Time.deltaTime);
         _controller.center = Vector3.Lerp(_controller.center, targetCenter, _playerSettings.CrouchTransitionSpeed * Time.deltaTime);
+    }
+
+    private void Shoot() {
+        var weapon = _weaponController.CurrentWeapon;
+        weapon.Hit(_camera.transform.position, _camera.transform.forward);
     }
 }

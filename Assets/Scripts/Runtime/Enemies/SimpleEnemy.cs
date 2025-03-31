@@ -11,6 +11,7 @@ public class SimpleEnemy : BaseCharacter {
     public override void ChangeHealth(float amount) {
         if (IsDead) {
             Debug.Log($"{gameObject.name} is dead!");
+            Destroy(gameObject);
             return;
         }
         Debug.Log($"Hit {gameObject.name}! Health was {_health.CurrentHealth}.");

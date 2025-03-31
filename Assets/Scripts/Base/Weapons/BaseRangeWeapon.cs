@@ -1,32 +1,27 @@
 using UnityEngine;
 
 namespace Shooter.Weapons {
-    public abstract class BaseRangeWeapon : IRangeWeapon {
+    public abstract class BaseRangeWeapon : BaseWeapon, IWeapon, IReloadable, IAmmoUser {
         protected readonly float reloadTime;
+        protected bool isReloading = false;
         protected int currentAmmo;
         protected readonly int maxAmmo;
-        protected bool isReloading;
-        private readonly float spread;
-        protected readonly float range;
-        protected readonly float hitDamage;
 
-        protected BaseRangeWeapon(float reloadTime, int currentAmmo, int maxAmmo, float spread, float range, float hitDamage) {
+        private readonly float spread;
+
+        protected BaseRangeWeapon(float reloadTime, int currentAmmo, int maxAmmo, float spread, float hitDamage, float range, GameObject weaponPrefab) : base(hitDamage, range, weaponPrefab) {
             this.reloadTime = reloadTime;
             this.currentAmmo = currentAmmo;
             this.maxAmmo = maxAmmo;
             this.spread = spread;
-            this.range = range;
-            this.hitDamage = hitDamage;
         }
 
-        public bool IsReloading => isReloading;
         public float ReloadTime => reloadTime;
+        public bool IsReloading => isReloading;
         public int CurrentAmmo => currentAmmo;
         public int MaxAmmo => maxAmmo;
         public bool HasAmmo => currentAmmo > 0;
-        public float Range => range;
-
-        public float HitDamage => hitDamage;
+        
 
         public virtual void ConsumeAmmo(int amount) {
             currentAmmo = System.Math.Max(currentAmmo - amount, 0);
@@ -35,7 +30,6 @@ namespace Shooter.Weapons {
         public abstract void Reload();
 
         public abstract void Aim(bool status);
-        public abstract void Hit(Vector3 origin, Vector3 direction);
 
         protected Vector3 ApplySpread(Vector3 direction) {
             float halfAngle = spread * 0.5f;

@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour {
     private float _mouseY = 0;
     private bool _jump = false;
     private bool _crouch = false;
+    private bool _isShooting = false;
 
 
     void Update() {
@@ -17,10 +18,12 @@ public class InputManager : MonoBehaviour {
 
         _jump = Input.GetKeyDown(KeyCode.Space);
         _crouch = Input.GetKey(KeyCode.LeftControl);
+        _isShooting = Input.GetMouseButtonDown(0);
     }
 
     public bool IsJumping => _jump;
     public bool IsCrouching => _crouch;
+    public bool IsShooting => _isShooting;
 
     public Vector3 GetMovementInput() => Vector3.ClampMagnitude(new(_horizontalInput, 0, _verticalInput), 1);
     public Vector3 GetMouseInput() => Vector3.ClampMagnitude(new(_mouseX, _mouseY, 0), 1);

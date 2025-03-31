@@ -8,7 +8,7 @@ namespace Shooter.Weapons {
     public class Shotgun : BaseRangeWeapon {
         private readonly int _hitsPerBullet;
 
-        public Shotgun(float reloadTime, int currentAmmo, int maxAmmo, float spread, float range, float hitDamage, int hitsPerBullet) : base(reloadTime, currentAmmo, maxAmmo, spread, range, hitDamage) {
+        public Shotgun(float reloadTime, int currentAmmo, int maxAmmo, float spread, float hitDamage, float range, GameObject weaponPrefab, int hitsPerBullet) : base(reloadTime, currentAmmo, maxAmmo, spread, hitDamage, range, weaponPrefab) {
             _hitsPerBullet = hitsPerBullet;
         }
 
@@ -34,6 +34,8 @@ namespace Shooter.Weapons {
                 var health = hit.collider.GetComponent<IHaveHealth>();
                 health?.ChangeHealth(-hitDamage);
             }
+
+            ConsumeAmmo(1);
         }
 
         public override void Reload() {
