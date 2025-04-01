@@ -19,7 +19,7 @@ public class InputManager : MonoBehaviour {
 
         _jump = Input.GetKeyDown(KeyCode.Space);
         _crouch = Input.GetKey(KeyCode.LeftControl);
-        _isShooting = Input.GetMouseButtonDown(0);
+        _isShooting = Input.GetMouseButton(0);
         _isUsing = Input.GetKeyDown(KeyCode.E);
     }
 

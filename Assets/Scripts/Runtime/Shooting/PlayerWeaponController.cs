@@ -8,7 +8,7 @@ using Zenject;
 public class PlayerWeaponController : MonoBehaviour {
 
     [SerializeField] private Transform _weaponSocket;
-    [SerializeField] private GameObject _shotgunPrefab;
+    private MuzzleParticle _muzzleParticle;
     //[Inject] private PlayerModel _playerModel;
     public IWeapon CurrentWeapon { get; private set; }
 
@@ -19,10 +19,15 @@ public class PlayerWeaponController : MonoBehaviour {
         //_playerModel.SetCurrentWeapon(baseItem.InventoryItem);
     }
 
+    public void Attack(Vector3 origin, Vector3 direction) {
+        CurrentWeapon?.Attack(origin, direction, _muzzleParticle);
+    }
+
     private void InstallWeapon(WeaponSO weaponPrefab) {
         UninstallWeapon();
         var weapon = Instantiate(weaponPrefab.ItemPrefab, _weaponSocket);
         weapon.transform.SetLocalPositionAndRotation(weaponPrefab.EquippedPosition, Quaternion.Euler(weaponPrefab.EquippedRotation));
+        _muzzleParticle = weapon.GetComponentInChildren<MuzzleParticle>(true);
     }
 
     private void UninstallWeapon() {
@@ -32,5 +37,7 @@ public class PlayerWeaponController : MonoBehaviour {
                 Destroy(child);
             }
         }
+
+        _muzzleParticle = null;
     }
 }

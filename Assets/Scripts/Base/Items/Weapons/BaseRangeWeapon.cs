@@ -12,9 +12,9 @@ namespace Shooter.Items.Weapons {
         }
 
         public bool HasAmmo => _currentAmmo > 0;
-        public override void Attack(Vector3 origin, Vector3 direction) {
+        public override void Attack(Vector3 origin, Vector3 direction, MuzzleParticle muzzleParticle = null) {
             if (HasAmmo && !_isReloading) {
-                base.Attack(origin, direction);
+                base.Attack(origin, direction, muzzleParticle);
             }
         }
 

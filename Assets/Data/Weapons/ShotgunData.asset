@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcf9166084219754eb2732dc5ae59b90, type: 3}
+  m_Name: ShotgunData
+  m_EditorClassIdentifier: 
+  _inventorySize: {x: 2, y: 4}
+  _icon: {fileID: 0}
+  _name: Shotgun
+  _description: Shotgun
+  _itemPrefab: {fileID: 5855586643228379229, guid: f01648398d91d0e4496dd8cbd37bce2c,
+    type: 3}
+  _damage: 40
+  _range: 30
+  _attackRate: 1.5
+  _spread: 30
+  _equippedPosition: {x: -0.15, y: 0, z: 0}
+  _equippedRotation: {x: 0, y: -77.88, z: -5.97}
+  _hitParticle: {fileID: 900327514655718968, guid: bc3e6a21fdd3801499088dc14b20ed8e,
+    type: 3}
+  _attackParticle: {fileID: 100006, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
+  _maxAmmo: 16
+  _hitsPerAmmo: 8
+  _reloadTime: 4
+  _ammoType: 0

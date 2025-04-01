@@ -10,9 +10,13 @@ namespace Shooter.Items.Weapons {
         protected BaseWeapon(GameObject weaponPrefab, TSO weaponInfo) : base(weaponPrefab, weaponInfo) {
         }
 
-        public virtual void Attack(Vector3 origin, Vector3 direction) {
+        public virtual void Attack(Vector3 origin, Vector3 direction, MuzzleParticle muzzleParticle = null) {
             if (CanHit()) {
                 Hit(origin, direction);
+
+                if (muzzleParticle != null) {
+                    muzzleParticle.PlayAttackParticle();
+                }
             }
         }
 
@@ -21,6 +25,14 @@ namespace Shooter.Items.Weapons {
             if (Physics.Raycast(origin, modifiedDirection, out RaycastHit hit, ItemInfo.Range)) {
                 var health = hit.collider.GetComponent<IHaveHealth>();
                 health?.ChangeHealth(-ItemInfo.Damage);
+
+                if (ItemInfo.HitParticle != null) {
+                    Object.Instantiate(
+                        ItemInfo.HitParticle,
+                        hit.point,
+                        Quaternion.LookRotation(hit.normal)
+                    );
+                }
             }
         }
 

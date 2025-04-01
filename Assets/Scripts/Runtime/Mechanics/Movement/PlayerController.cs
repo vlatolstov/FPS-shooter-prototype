@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
         CheckCrouching();
 
         if (_input.IsShooting) {
-            Shoot();
+            AttackWithEquippedWeapon();
         }
 
         CheckFrontalRaycast();
@@ -89,9 +89,8 @@ public class PlayerController : MonoBehaviour {
         _controller.center = Vector3.Lerp(_controller.center, targetCenter, _playerSettings.CrouchTransitionSpeed * Time.deltaTime);
     }
 
-    private void Shoot() {
-        var weapon = _weaponController.CurrentWeapon;
-        weapon?.Attack(_camera.transform.position, _camera.transform.forward);
+    private void AttackWithEquippedWeapon() {
+        _weaponController.Attack(_camera.transform.position, _camera.transform.forward);
     }
 
     void CheckFrontalRaycast() {
