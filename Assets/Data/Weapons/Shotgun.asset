@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: ShotgunInfo
+  m_Name: Shotgun
   m_EditorClassIdentifier: Assembly-CSharp:Shooter.Items:WeaponWithAmmoSO
   _inventorySize: {x: 2, y: 4}
-  _icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  _icon: {fileID: 0}
   _name: Shotgun
   _description: Shotgun
   _itemPrefab: {fileID: 5855586643228379229, guid: f01648398d91d0e4496dd8cbd37bce2c,
     type: 3}
   _damage: 40
-  _range: 30
-  _attackRate: 1.2
-  _spread: 40
-  _maxAmmo: 8
+  _range: 40
+  _attackRate: 1.5
+  _spread: 30
+  _equippedPosition: {x: -0.15, y: 0, z: 0}
+  _equippedRotation: {x: 0, y: -75.82, z: -7.37}
+  _maxAmmo: 16
   _hitsPerAmmo: 8
-  _reloadTime: 3
+  _reloadTime: 5
   _ammoType: 0

@@ -9,24 +9,20 @@ public class PlayerWeaponController : MonoBehaviour {
 
     [SerializeField] private Transform _weaponSocket;
     [SerializeField] private GameObject _shotgunPrefab;
-    [Inject] private PlayerModel _playerModel;
+    //[Inject] private PlayerModel _playerModel;
     public IWeapon CurrentWeapon { get; private set; }
 
     public void ChangeWeapon(IWeapon newWeapon) {
-        //CurrentWeapon = newWeapon;
-        //var baseItem = (newWeapon as BaseItem);
-        //InstallWeapon(baseItem.ItemPrefab);
+        CurrentWeapon = newWeapon;
+        var baseItem = (newWeapon as BaseItem<WeaponWithAmmoSO>);
+        InstallWeapon(baseItem.ItemInfo);
         //_playerModel.SetCurrentWeapon(baseItem.InventoryItem);
     }
 
-    private void Start() {
-        //var shotgun = new Shotgun(1, 8, 10, 20, 15, 10, _shotgunPrefab, 8);
-        //ChangeWeapon(shotgun);
-    }
-
-    private void InstallWeapon(GameObject weaponPrefab) {
+    private void InstallWeapon(WeaponSO weaponPrefab) {
         UninstallWeapon();
-        Instantiate(weaponPrefab, _weaponSocket);
+        var weapon = Instantiate(weaponPrefab.ItemPrefab, _weaponSocket);
+        weapon.transform.SetLocalPositionAndRotation(weaponPrefab.EquippedPosition, Quaternion.Euler(weaponPrefab.EquippedRotation));
     }
 
     private void UninstallWeapon() {

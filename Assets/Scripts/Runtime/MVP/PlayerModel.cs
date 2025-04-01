@@ -3,7 +3,7 @@ using Zenject;
 public class PlayerModel : BaseModel<PlayerDataContainer>, ITickable {
 
     public PlayerModel(PlayerDataContainer container, PlayerWeaponController weaponController) : base(container) {
-        //_weaponController = weaponController;
+        
     }
 
     public InventoryData GetInventoryData() {
@@ -13,7 +13,6 @@ public class PlayerModel : BaseModel<PlayerDataContainer>, ITickable {
     //public void SetCurrentWeapon(InventoryWeapon weapon) {
     //    ChangeData<InventoryData>((inventoryData, container) => {
     //        inventoryData.EquippedWeapon = weapon;
-    //        _weaponController.ChangeWeapon(weapon.Weapon);
     //    });
     //}
 

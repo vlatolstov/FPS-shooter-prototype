@@ -15,11 +15,11 @@ namespace Shooter.Items {
         private GameObject _itemPrefab;
 
 
-        public Vector2 InventorySize { get => _inventorySize; }
-        public Sprite Icon { get => _icon; }
-        public string Name { get => _name; }
-        public string Description { get => _description; }
-        public GameObject ItemPrefab { get => _itemPrefab; }
+        public Vector2 InventorySize => _inventorySize;
+        public Sprite Icon => _icon;
+        public string Name => _name;
+        public string Description => _description;
+        public GameObject ItemPrefab => _itemPrefab;
     }
 
     public abstract class StackableItem : ItemSO {
@@ -27,16 +27,16 @@ namespace Shooter.Items {
         [Min(0)]
         private int _maxStackSize;
 
-        public int MaxStackSize { get => _maxStackSize; }
+        public int MaxStackSize => _maxStackSize;
     }
 
     [CreateAssetMenu(fileName = "AmmoItemSO", menuName = "Shooter/ScriptableObjects/AmmoItemSO")]
-    public class AmmoItemSO : ItemSO {
+    public class AmmoItemSO : StackableItem {
         [SerializeField]
         [Min(0)]
-        private int _maxStackSize;
+        private int _bulletsCount;
 
-        public int MaxStackSize { get => _maxStackSize; }
+        public int BulletsCount => _bulletsCount;
     }
 
     [CreateAssetMenu(fileName = "WeaponSO", menuName = "Shooter/ScriptableObjects/WeaponSO")]
@@ -54,11 +54,18 @@ namespace Shooter.Items {
         [SerializeField]
         [Range(0, 90)]
         private float _spread;
+        [SerializeField]
+        private Vector3 _equippedPosition;
+        [SerializeField]
+        private Vector3 _equippedRotation;
 
-        public float Damage { get => _damage; }
-        public float Range { get => _range; }
-        public float AttackRate { get => _attackRate; }
-        public float Spread { get => _spread; }
+        public float Damage => _damage;
+        public float Range => _range;
+        public float AttackRate => _attackRate;
+        public float Spread => _spread;
+
+        public Vector3 EquippedPosition => _equippedPosition;
+        public Vector3 EquippedRotation => _equippedRotation;
     }
 
     [CreateAssetMenu(fileName = "WeaponWithAmmoSO", menuName = "Shooter/ScriptableObjects/WeaponWithAmmoSO")]
@@ -75,10 +82,10 @@ namespace Shooter.Items {
         [SerializeField]
         private AmmoType _ammoType;
 
-        public int MaxAmmo { get => _maxAmmo; }
-        public int HitsPerAmmo { get => _hitsPerAmmo; }
-        public float ReloadTime { get => _reloadTime; }
-        public AmmoType AmmoType { get => _ammoType; }
+        public int MaxAmmo => _maxAmmo;
+        public int HitsPerAmmo => _hitsPerAmmo;
+        public float ReloadTime => _reloadTime;
+        public AmmoType AmmoType => _ammoType;
     }
 
     public enum AmmoType {

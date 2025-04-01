@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 using Zenject;
 
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour {
     private bool _isCrouching;
     private Vector3 _crouchCenter;
 
+    [SerializeField] private Text _tooltipText;
+
     public float SpeedModifier => _isCrouching ? _playerSettings.CrouchingModifier : 1;
 
     void Start() {
@@ -30,12 +33,15 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
+        UpdateTooltip();
         Move();
         CheckCrouching();
 
         if (_input.IsShooting) {
             Shoot();
         }
+
+        CheckFrontalRaycast();
     }
 
     private void Move() {
@@ -70,7 +76,7 @@ public class PlayerController : MonoBehaviour {
 
     private bool CanFitInShiftedPosition(Vector3 positionDelta) {
         Vector3 checkPosition = transform.position + positionDelta;
-        float checkRadius = _controller.radius -0.05f;
+        float checkRadius = _controller.radius - 0.05f;
         bool blocked = Physics.CheckSphere(checkPosition, checkRadius, ~LayerMask.GetMask("Player"));
         return !blocked;
     }
@@ -85,6 +91,31 @@ public class PlayerController : MonoBehaviour {
 
     private void Shoot() {
         var weapon = _weaponController.CurrentWeapon;
-        weapon.Attack(_camera.transform.position, _camera.transform.forward);
+        weapon?.Attack(_camera.transform.position, _camera.transform.forward);
+    }
+
+    void CheckFrontalRaycast() {
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out RaycastHit hit, 3f)) {
+            var pickup = hit.collider.GetComponent<PickupProcessor>();
+            if (pickup != null) {
+                UpdateTooltip(pickup.GetPickupInfo());
+
+                if (_input.IsUsing) {
+                    pickup.Pickup(gameObject);
+                }
+            }
+        }
+    }
+
+    void UpdateTooltip(string text = null) {
+        if (string.IsNullOrEmpty(text)) {
+            _tooltipText.text = "";
+            _tooltipText.gameObject.SetActive(false);
+        }
+
+        else {
+            _tooltipText.text = text;
+            _tooltipText.gameObject.SetActive(true);
+        }
     }
 }
