@@ -1,11 +1,17 @@
 
+using System.Collections;
+
+using NUnit.Framework.Constraints;
+
 using UnityEngine;
 
 namespace Shooter.Items.Weapons {
     public abstract class BaseRangeWeapon<TSO> : BaseWeapon<TSO>, IReloadable, IAmmoUser, IAimable where TSO : WeaponWithAmmoSO {
 
-        private bool _isReloading = false;
+        private float _reloadingTimestamp = 0f;
         private int _currentAmmo;
+
+        public bool IsReloading => ItemInfo.ReloadTime + _reloadingTimestamp < Time.time;
 
         protected BaseRangeWeapon(GameObject weaponPrefab, TSO weaponInfo) : base(weaponPrefab, weaponInfo) {
             _currentAmmo = weaponInfo.MaxAmmo;
@@ -13,7 +19,7 @@ namespace Shooter.Items.Weapons {
 
         public bool HasAmmo => _currentAmmo > 0;
         public override void Attack(Vector3 origin, Vector3 direction, MuzzleParticle muzzleParticle = null) {
-            if (HasAmmo && !_isReloading) {
+            if (HasAmmo && !IsReloading) {
                 base.Attack(origin, direction, muzzleParticle);
             }
         }
@@ -35,7 +41,10 @@ namespace Shooter.Items.Weapons {
         }
 
         public void Reload() {
-            throw new System.NotImplementedException();
+            if (IsReloading) {
+                _currentAmmo = ItemInfo.MaxAmmo;
+                _reloadingTimestamp = Time.time;
+            }
         }
     }
 }

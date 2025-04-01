@@ -135,6 +135,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShotgunAttack
       objectReference: {fileID: 0}
+    - target: {fileID: 3769057133344298637, guid: f9a6e35936b47f443a54a859d8227d9d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4526012095310079088, guid: f9a6e35936b47f443a54a859d8227d9d,
         type: 3}
       propertyPath: m_LocalScale.x

@@ -9,15 +9,15 @@ public class MuzzleParticle : MonoBehaviour {
         if (_particle == null)
             return;
 
-        //_particle.Play();
         _particle.gameObject.SetActive(true);
+        _particle.Play();
         StartCoroutine(StopAttackParticle());
     }
 
     IEnumerator StopAttackParticle() {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
 
-        //_particle.Stop();
         _particle.gameObject.SetActive(false);
+        _particle.Stop();
     }
 }

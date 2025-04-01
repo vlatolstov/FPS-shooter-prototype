@@ -26,8 +26,7 @@ MonoBehaviour:
   _equippedRotation: {x: 0, y: -77.88, z: -5.97}
   _hitParticle: {fileID: 900327514655718968, guid: bc3e6a21fdd3801499088dc14b20ed8e,
     type: 3}
-  _attackParticle: {fileID: 100006, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
-  _maxAmmo: 16
+  _maxAmmo: 1
   _hitsPerAmmo: 8
   _reloadTime: 4
   _ammoType: 0

@@ -41,6 +41,10 @@ public class PlayerController : MonoBehaviour {
             AttackWithEquippedWeapon();
         }
 
+        if (_input.NeedToReload) {
+            ReloadEquippedWeapon();
+        }
+
         CheckFrontalRaycast();
     }
 
@@ -93,10 +97,13 @@ public class PlayerController : MonoBehaviour {
         _weaponController.Attack(_camera.transform.position, _camera.transform.forward);
     }
 
+    private void ReloadEquippedWeapon() {
+        _weaponController.Reload();
+    }
+
     void CheckFrontalRaycast() {
         if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out RaycastHit hit, 3f)) {
-            var pickup = hit.collider.GetComponent<PickupProcessor>();
-            if (pickup != null) {
+            if (hit.collider.TryGetComponent<PickupProcessor>(out var pickup)) {
                 UpdateTooltip(pickup.GetPickupInfo());
 
                 if (_input.IsUsing) {

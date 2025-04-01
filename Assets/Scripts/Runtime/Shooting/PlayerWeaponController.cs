@@ -23,6 +23,12 @@ public class PlayerWeaponController : MonoBehaviour {
         CurrentWeapon?.Attack(origin, direction, _muzzleParticle);
     }
 
+    public void Reload() {
+        if (CurrentWeapon is RangeWeapon weapon) {
+            weapon.Reload();
+        }
+    }
+
     private void InstallWeapon(WeaponSO weaponPrefab) {
         UninstallWeapon();
         var weapon = Instantiate(weaponPrefab.ItemPrefab, _weaponSocket);
